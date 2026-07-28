@@ -1,0 +1,367 @@
+/* ==========================================================================
+   Meridian — page styles.
+
+   Implements Meridian.dc.html on top of the Modernist design system.
+   Load after modernist.css. Every color, font and radius comes from the
+   design-system tokens; the sizes below are the ones the design specifies.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Accent palettes
+
+   The source design exposed the accent as an editor prop with three options.
+   Here it is an attribute on <html> — `data-accent` — defaulting to the
+   design's own default, Rich navy. Only the four accent roles the page
+   actually uses are overridden; the DS 100–900 ramps stay as shipped.
+   -------------------------------------------------------------------------- */
+[data-accent="rich-navy"] {
+  --color-accent: #1f3d68;
+  --color-accent-600: #17324f;
+  --color-accent-700: #102640;
+  --color-accent-2: #3a5f8a;
+}
+[data-accent="ink-blue"] {
+  --color-accent: #1c4fb0;
+  --color-accent-600: #163f8f;
+  --color-accent-700: #123472;
+  --color-accent-2: #4a6fc0;
+}
+[data-accent="original-red"] {
+  --color-accent: #ec3013;
+  --color-accent-600: #dd2b0f;
+  --color-accent-700: #ae1800;
+  --color-accent-2: #e15b47;
+}
+
+/* --------------------------------------------------------------------------
+   Page frame
+   -------------------------------------------------------------------------- */
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+}
+
+a { color: var(--color-accent); text-underline-offset: 3px; }
+a:hover { color: var(--color-accent-700); }
+
+/* Jump link for keyboard users — off-screen until focused. */
+.skip-link {
+  position: absolute; left: -9999px; top: 0; z-index: 10;
+  padding: 10px 16px; background: var(--color-accent); color: var(--color-bg);
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  font-size: 14px; text-decoration: none;
+}
+.skip-link:focus { left: 0; color: var(--color-bg); }
+
+/* The 1180px measure the whole design is set on. */
+.shell {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 clamp(24px, 5vw, 72px);
+}
+
+/* --------------------------------------------------------------------------
+   Navigation
+   -------------------------------------------------------------------------- */
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 22px clamp(24px, 5vw, 72px);
+  border-bottom: 2px solid var(--color-divider);
+}
+.site-nav__brand {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 22px;
+  letter-spacing: -0.01em;
+  margin-right: auto;
+}
+.site-nav__link {
+  font-size: 14px;
+  text-decoration: none;
+  color: var(--color-text);
+}
+.site-nav__link:hover,
+.site-nav__link[aria-current="true"] { color: var(--color-accent); }
+
+/* --------------------------------------------------------------------------
+   Shared section furniture
+   -------------------------------------------------------------------------- */
+.kicker {
+  display: block;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent-700);
+  font-weight: 600;
+  margin: 0 0 12px;
+}
+
+.section { padding: clamp(48px, 7vw, 80px) 0; scroll-margin-top: 24px; }
+
+.section__title {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: clamp(28px, 3.4vw, 40px);
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  margin: 0 0 40px;
+  max-width: 20ch;
+}
+
+.actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* The design's grid cells: a 2px divider showing through a hairline gap. */
+.cell-grid {
+  display: grid;
+  gap: 2px;
+  background: var(--color-divider);
+  border: 2px solid var(--color-divider);
+}
+
+/* --------------------------------------------------------------------------
+   Hero
+   -------------------------------------------------------------------------- */
+.hero { padding: clamp(56px, 9vw, 120px) 0 clamp(48px, 7vw, 88px); }
+.hero .kicker { margin-bottom: 22px; }
+.hero__title {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: clamp(42px, 6.4vw, 82px);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  margin: 0 0 0 -0.04em; /* optical alignment: pull the cap off the margin */
+  max-width: 16ch;
+}
+.hero__lede {
+  font-size: 18px;
+  line-height: 1.62;
+  max-width: 56ch;
+  margin: 34px 0 0;
+  color: color-mix(in srgb, var(--color-text) 82%, transparent);
+}
+.hero .actions { margin-top: 36px; }
+
+/* --------------------------------------------------------------------------
+   Principles
+   -------------------------------------------------------------------------- */
+.principles { grid-template-columns: repeat(2, 1fr); }
+
+.principle {
+  background: var(--color-bg);
+  padding: clamp(24px, 3vw, 36px);
+}
+.principle__mark {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 16px;
+  color: var(--color-accent);
+}
+.principle__title {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 23px;
+  letter-spacing: -0.01em;
+  margin: 12px 0 10px;
+}
+.principle__body {
+  font-size: 15.5px;
+  line-height: 1.58;
+  margin: 0;
+  color: color-mix(in srgb, var(--color-text) 78%, transparent);
+  max-width: 44ch;
+}
+
+/* --------------------------------------------------------------------------
+   Phases table
+   -------------------------------------------------------------------------- */
+.table-scroll { overflow-x: auto; }
+.phases { min-width: 720px; }
+.phases__num-col { width: 56px; }
+.phases__phase-col { width: 22%; }
+.phases__num {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  color: var(--color-accent);
+}
+.phases__name { font-weight: 600; }
+
+/* --------------------------------------------------------------------------
+   Writing
+   -------------------------------------------------------------------------- */
+.writing { padding: clamp(48px, 7vw, 80px) 0 clamp(40px, 5vw, 56px); }
+.writing .section__title { margin-bottom: 20px; max-width: 22ch; }
+.writing__lede {
+  font-size: 17px;
+  line-height: 1.62;
+  max-width: 58ch;
+  margin: 0 0 36px;
+  color: color-mix(in srgb, var(--color-text) 82%, transparent);
+}
+
+.portrait {
+  margin: 0 0 12px;
+  border-top: 2px solid var(--color-divider);
+}
+.portrait__frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1180 / 380;
+  background: var(--color-surface);
+  overflow: hidden;
+}
+.portrait__frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* Shown only when no portrait file is present. */
+.portrait__frame::after {
+  content: attr(data-placeholder);
+  position: absolute;
+  inset: 0;
+  display: none;
+  align-items: center;
+  padding: 0 clamp(16px, 3vw, 32px);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  color: color-mix(in srgb, var(--color-text) 55%, transparent);
+}
+.portrait__frame.is-empty img { display: none; }
+.portrait__frame.is-empty::after { display: flex; }
+
+.essay {
+  display: grid;
+  grid-template-columns: 120px 1fr auto;
+  gap: 28px;
+  align-items: baseline;
+  padding: 26px 0;
+  border-top: 2px solid var(--color-divider);
+  text-decoration: none;
+  color: var(--color-text);
+}
+.essay:last-of-type { border-bottom: 2px solid var(--color-divider); }
+.essay:hover { color: var(--color-text); }
+.essay:hover .essay__title { color: var(--color-accent); }
+.essay__date {
+  font-size: 14px;
+  font-feature-settings: 'tnum' 1;
+  color: color-mix(in srgb, var(--color-text) 62%, transparent);
+}
+.essay__title {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: clamp(20px, 2.2vw, 26px);
+  letter-spacing: -0.01em;
+  margin: 0 0 8px;
+}
+.essay__body {
+  font-size: 15px;
+  line-height: 1.55;
+  margin: 0;
+  max-width: 56ch;
+  color: color-mix(in srgb, var(--color-text) 72%, transparent);
+}
+.essay__arrow {
+  font-size: 20px;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  color: var(--color-accent);
+}
+
+/* --------------------------------------------------------------------------
+   Full-bleed bands
+   -------------------------------------------------------------------------- */
+.band--surface { background: var(--color-surface); }
+.band--surface .band__inner { padding-block: clamp(44px, 6vw, 72px); }
+
+.band--poster { background: var(--color-accent); color: var(--color-bg); }
+.band--poster .band__inner { padding-block: clamp(56px, 8vw, 104px); }
+
+.band__inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding-inline: clamp(24px, 5vw, 72px);
+}
+
+.wontdo { grid-template-columns: repeat(3, 1fr); list-style: none; margin: 0; padding: 0; }
+.wontdo li {
+  background: var(--color-surface);
+  padding: 28px;
+  display: flex;
+  gap: 14px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.wontdo__dot {
+  width: 10px;
+  height: 10px;
+  background: var(--color-accent);
+  flex: none;
+  margin-top: 7px;
+}
+.band--surface .section__title {
+  font-size: clamp(26px, 3.2vw, 36px);
+  line-height: 1.1;
+  margin-bottom: 32px;
+  max-width: 22ch;
+}
+
+.poster__title {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: clamp(36px, 5.4vw, 68px);
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  margin: 0 0 0 -0.04em;
+  max-width: 16ch;
+}
+.band--poster .actions { margin-top: 40px; }
+
+/* The ghost button reversed out of the accent field. Its DS hover is an
+   accent tint, which is invisible here — tint with the ground instead. */
+.btn-ghost--invert { color: var(--color-bg); border-color: var(--color-bg); }
+.btn-ghost--invert:hover { background: color-mix(in srgb, var(--color-bg) 16%, transparent); }
+.btn-ghost--invert:active { background: color-mix(in srgb, var(--color-bg) 26%, transparent); }
+.btn-ghost--invert:focus-visible { outline-color: var(--color-bg); }
+
+/* --------------------------------------------------------------------------
+   Footer
+   -------------------------------------------------------------------------- */
+.site-footer { padding: clamp(32px, 4vw, 48px) clamp(24px, 5vw, 72px); max-width: 1180px; margin: 0 auto; }
+.site-footer p {
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 0;
+  color: color-mix(in srgb, var(--color-text) 66%, transparent);
+}
+
+/* --------------------------------------------------------------------------
+   Narrow viewports
+
+   The design is drawn at 1180px. Below that the modular grid collapses to a
+   single column rather than crushing the cells — the rules and flush-left
+   alignment carry the structure at every width.
+   -------------------------------------------------------------------------- */
+@media (max-width: 860px) {
+  .principles,
+  .wontdo { grid-template-columns: 1fr; }
+
+  .essay { grid-template-columns: 1fr auto; gap: 8px 20px; }
+  .essay__date { grid-column: 1 / -1; }
+}
+
+@media (max-width: 620px) {
+  .site-nav { flex-wrap: wrap; gap: 16px 20px; }
+  .site-nav__brand { margin-right: auto; }
+  .hero__lede { font-size: 17px; }
+  .wontdo li { padding: 22px; }
+}

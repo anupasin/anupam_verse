@@ -1,0 +1,66 @@
+---
+title: "Fluent, confident, wrong"
+description: "Fifteen years of checking other people's transcripts taught me to recognise a specific kind of error. It is the same error language models make, and almost nobody is looking for it."
+date: "2026-07-20"
+tags: ["AI", "Attention", "Craft"]
+featured: true
+draft: false
+---
+
+There is a particular sound a transcript makes when the person producing it has stopped listening.
+
+It doesn't sound like carelessness. Careless work announces itself — gaps, misspellings, sentences that stop mid-clause. This is the opposite. The prose gets *smoother*. The sentences resolve neatly. Technical terms appear in the right places. Everything reads well, and some of it is wrong.
+
+What has happened is that the transcriber's brain has quietly switched modes. Instead of hearing what was said and writing it down, it has started predicting what a sentence like that one usually ends with, and writing that. Most of the time the prediction is correct, which is exactly why the mode is so dangerous. It fails only occasionally, and when it fails, it produces something plausible.
+
+I have spent fifteen years catching that, and I still do it most weeks. Medical records, legal proceedings, quality control on other people's work — the job of being the last person to read a document before it becomes the thing everyone relies on afterwards. And the single most useful skill I've developed is not spelling or speed or subject knowledge. It's a kind of suspicion. A feel for the texture of a sentence that is too well-formed for the circumstances that produced it.
+
+I don't think I understood how transferable that was until I started working with language models.
+
+## The same failure, industrialised
+
+An LLM is a prediction engine. That is not a criticism; it is a description, and it's the source of nearly everything useful about them. But it means the failure mode is not random. It is the specific failure of a mind that has stopped listening and started predicting: fluent, well-formed, contextually appropriate, and occasionally false.
+
+The industry has a word for this — hallucination — and I think the word does real damage. It suggests something exotic and rare, a glitch, an aberration from normal operation. It isn't. It's the same operation that produces the correct answers, running on a case where prediction and truth happen to diverge. There is no internal signal distinguishing the two. The model is not more confident when it's right.
+
+Which means the check cannot come from the model. It has to come from the system around it, or from a person, and the person has to be looking for the *right thing*.
+
+Most people checking AI output are, in my experience, checking for the wrong thing. They read for obvious error — nonsense, contradiction, the sort of failure that waves at you. That kind of error is real but it is not the expensive one. The expensive one is the sentence that survives the read because it sounds like every other sentence around it.
+
+## What you actually learn to look for
+
+Some of this generalises. From fifteen years of it, the signals I trust most:
+
+**Specificity that arrived from nowhere.** A number, a date, a name, a citation appearing with more precision than the source could possibly support. If the input said "a few weeks later" and the output says "approximately three weeks later," something has been invented, and the fact that it's a reasonable invention is not a defence.
+
+**Smoothness at a seam.** Documents have joins — a change of topic, a handover, a point where the underlying material was thin. Real accounts get slightly awkward at the joins because reality is awkward. Predicted text glides straight through. When a summary reads more coherently than the thing it summarises, the coherence came from somewhere, and it wasn't the source.
+
+**Internal consistency without external anchoring.** The most convincing wrong documents are perfectly self-consistent. Every figure agrees with every other figure. Nothing contradicts. That is not evidence of accuracy; it's evidence that one process produced all of it. Real documents assembled from real sources have small frictions in them.
+
+**The plausible default.** When a model doesn't know something, it doesn't produce a blank. It produces the most typical value. Ask what medication a patient is on and you'll get a common one. Ask for the governing statute and you'll get the one that usually governs. The answer is right often enough that catching it requires knowing the domain, not just reading carefully.
+
+None of these are tricks. They're the residue of doing the work by hand for long enough that the shape of the error becomes familiar — and of still doing it, which is the part I'd defend hardest. The instinct decays if you stop.
+
+## Why this is a design problem, not a vigilance problem
+
+Here is where I'd part company with a lot of the "keep a human in the loop" advice, which I think is mostly a way of assigning blame rather than preventing failure.
+
+Human attention degrades. It degrades fast, and it degrades in a specific pattern: the more reliable the system, the worse the human gets at checking it. If a model is right 95% of the time, nobody sustains genuine scrutiny past the first fortnight. You cannot solve a systematic failure by asking someone to be permanently suspicious, any more than you can solve a poorly-designed form by asking people to concentrate harder.
+
+So the useful question isn't "who checks the output." It's: *what would have to be true for the error to be visible without anyone being vigilant?*
+
+Usually the answer involves one of three things. Make the model cite, so a claim without a source is structurally obvious rather than a matter of judgement. Constrain the output shape, so the system can only produce things in a form where wrongness is checkable — a field that must match a value elsewhere, a date that must fall in a range. Or narrow the job, so the model does the part that is genuinely predictive and a deterministic system does the part that must be exact. Most of the failures I've seen in production came from asking a probabilistic system to be the source of a fact.
+
+That's not a limitation to be engineered around. It's the correct division of labour, and building around it is most of what the job actually is.
+
+## The part I keep coming back to
+
+What strikes me about all this is how *unglamorous* the relevant expertise turns out to be.
+
+The conversation about AI is dominated by capability — what the models can now do, what they'll do next. But the difference between an AI system that helps and one that quietly corrupts your records is not capability. It's whether anyone involved has a well-developed instinct for the specific way fluent output goes wrong.
+
+That instinct isn't taught in the places currently building these systems. It's taught in transcription, in copy-editing, in proofreading, in translation, in court reporting, in medical coding — the checking professions, which have spent a century developing a practical epistemology of "how do documents lie" and which are, at the moment, being cheerfully automated by people who have never read one closely.
+
+I don't think that's a tragedy, exactly. Much of the mechanical layer of that work should be automated, and I've automated a good deal of my own. But the *knowledge* embedded in it is worth more now than it has ever been, and it's held almost entirely by people being told their skills are obsolete.
+
+They aren't obsolete. They've become the check on the thing replacing them, which is a strange position to be in — and, I'd argue, a genuinely valuable one. It's why I haven't stopped doing the work. The moment I'm only building these systems and never using them on something that matters, I lose the thing that made me worth asking.

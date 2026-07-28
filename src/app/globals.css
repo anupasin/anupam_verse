@@ -1,0 +1,288 @@
+@import "tailwindcss";
+
+/* Dark mode is driven by [data-theme] on <html>, set before paint by the
+   inline script in layout.tsx. Using an attribute rather than a class keeps
+   the no-flash script trivial and lets CSS own the whole theme. */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* ==========================================================================
+   Tokens
+
+   Derived from the Modernist design system (see reference/meridian/). The
+   system's rules are kept intact: zero radius, 2px dividers, one accent used
+   sparingly, warm ink on a warm ground. The accent is Rich Navy.
+   ========================================================================== */
+:root {
+  color-scheme: light;
+
+  --bg: #f3f2f2;
+  --surface: #eae9e9;
+  --text: #201e1d;
+  --divider: color-mix(in srgb, #201e1d 40%, transparent);
+  --divider-soft: color-mix(in srgb, #201e1d 16%, transparent);
+
+  /* Text tones. Named by intent so pages never reach for a raw color-mix. */
+  --text-strong: #201e1d;
+  --text-body: color-mix(in srgb, #201e1d 82%, transparent);
+  --text-muted: color-mix(in srgb, #201e1d 72%, transparent);
+  /* 65% is the lowest step that still clears 4.5:1 on this ground. The design's
+     quieter 52% was under it, and this tone carries dates and metadata — real
+     text, not decoration. */
+  --text-faint: color-mix(in srgb, #201e1d 65%, transparent);
+
+  /* Accent roles.
+     --accent      the brand fill: primary button, poster band, small marks
+     --accent-hover  its hover/pressed step
+     --accent-text   the accent used AS text on the page ground (>= 4.5:1)
+     --on-accent     foreground on top of an accent fill */
+  --accent: #1f3d68;
+  --accent-hover: #17324f;
+  --accent-text: #1b3559;
+  --on-accent: #f3f2f2;
+  --accent-wash: color-mix(in srgb, #1f3d68 8%, transparent);
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg: #131211;
+  --surface: #1d1b1a;
+  --text: #f2f0ee;
+  --divider: color-mix(in srgb, #f2f0ee 34%, transparent);
+  --divider-soft: color-mix(in srgb, #f2f0ee 14%, transparent);
+
+  --text-strong: #f2f0ee;
+  --text-body: color-mix(in srgb, #f2f0ee 82%, transparent);
+  --text-muted: color-mix(in srgb, #f2f0ee 70%, transparent);
+  --text-faint: color-mix(in srgb, #f2f0ee 58%, transparent);
+
+  /* Rich Navy is far too dark to read against a near-black ground, so the
+     dark theme lifts it rather than inverting: the fill brightens enough to
+     stay a field, and accent-as-text moves to a light step entirely. */
+  --accent: #2a5490;
+  --accent-hover: #37699e;
+  --accent-text: #9dc0ec;
+  --on-accent: #f5f4f3;
+  --accent-wash: color-mix(in srgb, #9dc0ec 12%, transparent);
+}
+
+/* `inline` makes the generated utilities point at the variables above rather
+   than copying their values, so every utility re-resolves on theme change. */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-ink: var(--text);
+  --color-divider: var(--divider);
+  --color-divider-soft: var(--divider-soft);
+
+  --color-strong: var(--text-strong);
+  --color-body: var(--text-body);
+  --color-muted: var(--text-muted);
+  --color-faint: var(--text-faint);
+
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-text: var(--accent-text);
+  --color-on-accent: var(--on-accent);
+  --color-accent-wash: var(--accent-wash);
+
+  --font-sans: var(--font-archivo), system-ui, sans-serif;
+
+  /* Fluid display sizes. The design is drawn at 1180px; these are the same
+     clamps, expressed once so no page hard-codes them. */
+  /* Capped at 68px rather than the design's 82px. Two reasons: the homepage
+     has to answer four questions above the fold and the headline was eating
+     it, and at 80px+ an eight-word statement stops reading as confident and
+     starts reading as loud. */
+  --text-display: clamp(2.375rem, 5.4vw, 4.25rem);
+  --text-display--line-height: 1.06;
+  --text-poster: clamp(2rem, 4.6vw, 3.5rem);
+  --text-poster--line-height: 1.06;
+  --text-title: clamp(1.75rem, 3.4vw, 2.5rem);
+  --text-title--line-height: 1.08;
+  --text-subtitle: clamp(1.5rem, 3.2vw, 2.125rem);
+  --text-subtitle--line-height: 1.1;
+  --text-essay: clamp(1.25rem, 2.2vw, 1.625rem);
+  --text-essay--line-height: 1.15;
+
+  --radius-none: 0px;
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+@layer base {
+  * {
+    /* The system has no rounded corners anywhere. This makes that structural
+       rather than a thing every component has to remember. */
+    border-radius: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-archivo), system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 800;
+    line-height: 1.12;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--accent) 26%, transparent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent-text);
+    outline-offset: 2px;
+  }
+
+  /* Subtle animation only, and none at all for anyone who has asked. */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* ==========================================================================
+   Utilities
+   ========================================================================== */
+@utility optical-left {
+  /* Pulls a display cap off the left margin so it aligns optically with the
+     body copy beneath it. Modernist is flush-left; this is what makes it look it. */
+  margin-left: -0.045em;
+}
+
+@utility tnum {
+  font-feature-settings: "tnum" 1;
+}
+
+/* ==========================================================================
+   Long-form prose
+
+   Hand-rolled rather than @tailwindcss/typography: the system's rules about
+   rhythm, rule weight and flush-left alignment are specific enough that
+   overriding a general-purpose plugin costs more than writing it.
+   ========================================================================== */
+@layer components {
+  .prose {
+    font-size: 1.0625rem;
+    line-height: 1.72;
+    color: var(--text-body);
+    max-width: 68ch;
+  }
+
+  .prose > * + * { margin-top: 1.5em; }
+
+  .prose h2 {
+    font-size: clamp(1.5rem, 2.6vw, 1.875rem);
+    line-height: 1.15;
+    color: var(--text-strong);
+    margin-top: 2.75em;
+    margin-bottom: -0.4em;
+    scroll-margin-top: 6rem;
+  }
+
+  .prose h3 {
+    font-size: clamp(1.1875rem, 2vw, 1.4375rem);
+    line-height: 1.2;
+    color: var(--text-strong);
+    margin-top: 2.25em;
+    margin-bottom: -0.5em;
+    scroll-margin-top: 6rem;
+  }
+
+  .prose strong { color: var(--text-strong); font-weight: 600; }
+
+  .prose a {
+    color: var(--accent-text);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    transition: color 150ms ease;
+  }
+  .prose a:hover { color: var(--text-strong); }
+
+  .prose ul, .prose ol { padding-left: 1.25em; }
+  .prose ul { list-style: none; padding-left: 0; }
+  .prose ul > li {
+    position: relative;
+    padding-left: 1.5em;
+  }
+  .prose ul > li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.62em;
+    width: 7px;
+    height: 7px;
+    background: var(--accent-text);
+  }
+  .prose ol { list-style: decimal; }
+  .prose li + li { margin-top: 0.5em; }
+
+  .prose blockquote {
+    border-left: 2px solid var(--divider);
+    padding-left: 1.5em;
+    color: var(--text-muted);
+  }
+
+  .prose hr {
+    border: 0;
+    height: 2px;
+    background: var(--divider);
+    margin-block: 3em;
+  }
+
+  .prose code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.875em;
+    background: var(--surface);
+    padding: 0.15em 0.4em;
+    border: 1px solid var(--divider-soft);
+  }
+
+  .prose pre {
+    background: var(--surface);
+    border: 1px solid var(--divider-soft);
+    padding: 1.25em;
+    overflow-x: auto;
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+  .prose pre code { background: none; border: 0; padding: 0; font-size: inherit; }
+
+  .prose img { border: 1px solid var(--divider-soft); }
+
+  .prose table { width: 100%; border-collapse: collapse; font-size: 0.9375rem; }
+  .prose th {
+    text-align: left;
+    font-size: 0.6875rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    padding: 0.5rem 0.5rem 0.5rem 0;
+    border-bottom: 2px solid var(--divider);
+  }
+  .prose td {
+    padding: 0.65rem 0.5rem 0.65rem 0;
+    border-bottom: 1px solid var(--divider-soft);
+    vertical-align: top;
+  }
+}

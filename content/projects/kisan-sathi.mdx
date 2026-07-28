@@ -1,0 +1,54 @@
+---
+title: "Kisan Sathi"
+problem: "Agricultural advice exists in abundance and almost none of it is local. A farmer needs to know about their soil, their district's schemes and the disease on their plant — not the national average."
+description: "A mobile farming companion: soil assessment, crop recommendations, disease scanning, scheme information and a farm diary, all keyed to the user's actual location."
+date: "2026-06-20"
+status: "Live · Prototype"
+stack: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel", "AI vision"]
+url: "https://kisan-sathi-chi.vercel.app/"
+featured: true
+draft: false
+---
+
+## The problem
+
+There is no shortage of agricultural information in India. There is a severe
+shortage of agricultural information that applies to *this* field, *this* soil,
+*this* district's current schemes, and the specific thing eating *this* plant.
+
+Generic advice fails in a particular way here: it isn't wrong, it's unusable.
+A farmer reading a national fertiliser guideline still doesn't know what to do
+on Tuesday. The gap between correct information and actionable information is
+where the whole problem lives.
+
+## What I built
+
+A mobile-first companion app that resolves everything against the user's
+location and land:
+
+- **Soil assessment and crop recommendation** — what this ground will support,
+  not what grows well generally
+- **Disease and pest scanning** — point a camera at the affected plant rather
+  than trying to describe it in a search box
+- **Scheme information** — which government programmes actually apply here
+- **Fertiliser calculation** — quantities for this plot, not per-hectare tables
+- **Farm diary and alerts** — a record that makes next season's decisions better
+  than this season's
+
+The camera-based scanning is the piece that only became possible recently, and
+it's the one that changes who can use the app. Describing a plant disease in
+text requires vocabulary a lot of users don't have in the interface language.
+Photographing it doesn't.
+
+## Where it stands
+
+A working prototype, live and usable. The honest status is that the
+recommendation logic needs validation against real agronomic outcomes before
+anyone should make an expensive decision on it — which is exactly the kind of
+claim I'd want checked if someone else were making it to me.
+
+## Why it's here
+
+It's the clearest example of building for a user who is not like me, in a
+context where being confidently wrong has a cost measured in a season's income.
+Most of the design work was deciding what the app should refuse to answer.
