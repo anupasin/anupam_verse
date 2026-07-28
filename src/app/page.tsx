@@ -21,29 +21,29 @@ const OUTCOMES = [
   {
     mark: "A",
     kind: "Done by me",
-    title: "Transcription and document production",
-    body: "Medical, legal and general transcription produced to a standard that survives scrutiny — correct speaker turns, real punctuation, consistent formatting, the domain vocabulary right. Fifteen years of it, and still the work I do most weeks.",
+    title: "Turn recordings into records you can rely on",
+    body: "You have twelve hours of interviews, consultations or testimony, and an automatic transcript that isn't close enough to use. I produce the finished document: correct speaker turns, real punctuation, consistent formatting, the domain vocabulary right.",
     examples: "Medical transcription · Legal and court transcripts · Editing and quality control",
   },
   {
     mark: "B",
     kind: "Done by me",
-    title: "Writing and editorial",
-    body: "Long-form essays, explanatory writing, and the unglamorous editing that turns a draft into something publishable. I run two publications of my own, so this isn't a service invented for a website.",
+    title: "Make the writing say what you actually mean",
+    body: "You have something worth saying and a draft that doesn't yet say it — or no draft and no time to make one. I write and edit for a living, and I run two publications of my own, so this isn't a service invented for a website.",
     examples: "Content writing · Editing and refinement · Documentation",
   },
   {
     mark: "C",
     kind: "Built for you",
-    title: "Systems that remove the repetitive work",
-    body: "The tasks too varied to script and too dull to keep doing by hand. I built exactly this for my own transcription work long before I built it for anyone else — which is the only reason I can tell you honestly where it stops working.",
+    title: "Stop doing by hand what a system should do",
+    body: "You waste three hours a day on work too varied to script and too dull to keep repeating. I built exactly this for my own transcription first — which is the only reason I can tell you honestly where it stops working.",
     examples: "Workflow automation · Internal tools · Custom web applications",
   },
   {
     mark: "D",
     kind: "Built for you",
-    title: "Making your own information usable",
-    body: "You already have the knowledge. It's in old files, past matters, email threads, and three people's memory. The work isn't acquiring it — it's giving it a shape you can actually ask questions of, without it going stale the week after I leave.",
+    title: "Get answers out of your own files",
+    body: "Your team can't find what it already knows. It's in old matters, past projects, email threads and three people's memory. The work isn't acquiring the knowledge — it's giving it a shape you can ask questions of.",
     examples: "Knowledge management · Documentation systems · Search and retrieval",
   },
 ];
@@ -93,7 +93,7 @@ export default function HomePage() {
       {/* ── Hero ───────────────────────────────────────────────────────── */}
       <Container>
         <section className="py-14 sm:py-20 lg:py-24">
-          <Kicker className="mb-6">Transcription · Writing · AI systems</Kicker>
+          <Kicker className="mb-6">Messy information, made usable</Kicker>
 
           <h1 className="optical-left max-w-[17ch] text-display font-extrabold tracking-[-0.02em] text-strong">
             I do the precision work. And I build the systems that make it faster.
@@ -101,16 +101,16 @@ export default function HomePage() {
 
           <div className="mt-9 max-w-[58ch] space-y-5 text-[18px] leading-[1.62] text-body">
             <p>
-              I&rsquo;m Anupam Singh. Fifteen years into medical and legal transcription, I still
-              take the work &mdash; the kind where a wrong word isn&rsquo;t a typo, it&rsquo;s a
-              different fact. Alongside it I write, edit, and build software.
+              I&rsquo;m Anupam Singh. Most of the work that eats a week is the same problem wearing
+              different clothes: information arrives in a mess, and someone has to turn it into
+              something usable. A recording into a record. A shelf of old files into an answer. A
+              rough draft into a piece worth publishing.
             </p>
             <p>
-              Those aren&rsquo;t separate careers. Doing the work daily is what taught me where
-              automated language systems quietly fail, and it&rsquo;s why the pipeline I built for my
-              own transcripts &mdash; formatting, punctuation, speaker turns, the hundred small
-              judgements between raw speech-to-text and a finished document &mdash; actually holds
-              up. I build that kind of system for other people now.
+              I do that work by hand &mdash; fifteen years of medical and legal transcription, still
+              current &mdash; and I build the systems that do it at scale. The second half is
+              credible because of the first: I know where automated language systems quietly fail
+              because I still catch them failing.
             </p>
           </div>
 
@@ -134,9 +134,9 @@ export default function HomePage() {
           <SectionHeading
             id="outcomes-title"
             kicker="What I do"
-            title="Two things I do, and two things I build."
-            lede="The first two I deliver myself. The second two I design and hand over. They're the same discipline from opposite ends — which is why I'm sceptical of automating work I haven't done by hand."
-            className="mb-10 [&_h2]:max-w-[24ch]"
+            title="Four problems, one shape."
+            lede="Every one of these is information arriving in a form you can't use. The first two I solve by hand and deliver as finished work. The second two I solve by building you the system and handing it over — which I'm only willing to do for work I've done manually first."
+            className="mb-10 [&_h2]:max-w-[24ch] [&_p]:max-w-[64ch]"
           />
 
           <CellGrid columns={2}>
@@ -174,6 +174,53 @@ export default function HomePage() {
       <Container>
         <Rule />
       </Container>
+
+      {/* ── Writing ────────────────────────────────────────────────────── */}
+      {articles.length > 0 ? (
+        <Container>
+          <Section labelledBy="writing-title">
+            <SectionHeading
+              id="writing-title"
+              kicker="Writing"
+              title="If you want to know how someone thinks, read them before you hire them."
+              lede="This is the part of the site I'd point you to first. Essays on AI, attention, systems and the parts of thinking that don't automate — written to work something out rather than to fill a schedule. If the reasoning here is useful to you, the consulting is the same reasoning applied to your problem."
+              className="mb-10 [&_h2]:max-w-[24ch] [&_p]:max-w-[64ch]"
+            />
+
+            <div>
+              {articles.map((article) => (
+                <ArticleRow key={article.slug} article={article} />
+              ))}
+            </div>
+
+            <div className="mt-8">
+              <ButtonLink href="/articles" variant="secondary">
+                All writing
+              </ButtonLink>
+            </div>
+          </Section>
+        </Container>
+      ) : null}
+
+      {/* ── Selected work — appears once a project is marked featured ───── */}
+      {featuredProjects.length > 0 ? (
+        <Container>
+          <Section labelledBy="work-title">
+            <SectionHeading
+              id="work-title"
+              kicker="Selected work"
+              title="Built for a specific problem."
+              className="mb-10"
+            />
+            <CellGrid columns={featuredProjects.length >= 3 ? 3 : 2}>
+              {featuredProjects.map((project) => (
+                <ProjectCard key={project.slug} project={project} />
+              ))}
+            </CellGrid>
+          </Section>
+        </Container>
+      ) : null}
+
 
       {/* ── How I work ─────────────────────────────────────────────────── */}
       <Container>
@@ -236,52 +283,6 @@ export default function HomePage() {
           </div>
         </Container>
       </section>
-
-      {/* ── Writing ────────────────────────────────────────────────────── */}
-      {articles.length > 0 ? (
-        <Container>
-          <Section labelledBy="writing-title">
-            <SectionHeading
-              id="writing-title"
-              kicker="Writing"
-              title="The interesting question was never whether it can. It's whether it should, and who decides."
-              lede="The method is how I work; the writing is how I think. Notes on AI, systems, and the parts of thinking that don't automate."
-              className="mb-10 [&_h2]:max-w-[26ch]"
-            />
-
-            <div>
-              {articles.map((article) => (
-                <ArticleRow key={article.slug} article={article} />
-              ))}
-            </div>
-
-            <div className="mt-8">
-              <ButtonLink href="/articles" variant="secondary">
-                All writing
-              </ButtonLink>
-            </div>
-          </Section>
-        </Container>
-      ) : null}
-
-      {/* ── Selected work — appears once a project is marked featured ───── */}
-      {featuredProjects.length > 0 ? (
-        <Container>
-          <Section labelledBy="work-title">
-            <SectionHeading
-              id="work-title"
-              kicker="Selected work"
-              title="Built for a specific problem."
-              className="mb-10"
-            />
-            <CellGrid columns={featuredProjects.length >= 3 ? 3 : 2}>
-              {featuredProjects.map((project) => (
-                <ProjectCard key={project.slug} project={project} />
-              ))}
-            </CellGrid>
-          </Section>
-        </Container>
-      ) : null}
 
       {/* ── Close ──────────────────────────────────────────────────────── */}
       <section className="bg-accent text-on-accent">

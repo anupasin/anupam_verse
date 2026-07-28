@@ -21,7 +21,7 @@ const SERVICES = [
   {
     mark: "A",
     kind: "Done by me",
-    title: "Transcription and document production",
+    title: "Turn recordings into records you can rely on",
     problem:
       "You have recordings that need to become documents precise enough to be relied on — and the automatic transcript isn't close enough to use.",
     body: "Medical, legal and general transcription, fifteen years in and still my regular work. Automatic speech-to-text has become genuinely good at words and remains poor at everything else: who was speaking, where the sentence ends, what the clinician actually meant by an abbreviation, how a jurisdiction expects its transcripts formatted. I run my own pipeline for the mechanical layer — speaker identification, paragraph and Q&A segmentation, punctuation, spacing and formatting conventions — which frees my attention for the ambiguous word, the crosstalk, and the thing a speaker plainly meant but did not quite say.",
@@ -35,7 +35,7 @@ const SERVICES = [
   {
     mark: "B",
     kind: "Done by me",
-    title: "Writing and editorial",
+    title: "Make the writing say what you actually mean",
     problem:
       "You have something worth saying and a draft that doesn't yet say it — or no draft, and no time to make one.",
     body: "Long-form essays, explanatory writing, and the unglamorous editing that turns a draft into something publishable. I run two publications of my own — one on consciousness and philosophy, one on making difficult ideas approachable — so this isn't a service invented for a website. The particular thing I'm good at is the failure mode where writing is technically correct and completely useless: accurate, rigorous, and comprehensible only to someone who didn't need it.",
@@ -49,7 +49,7 @@ const SERVICES = [
   {
     mark: "C",
     kind: "Built for you",
-    title: "Systems that remove the repetitive work",
+    title: "Stop doing by hand what a system should do",
     problem:
       "You or someone you pay is spending hours a week on work that is too varied to script and too dull to keep doing by hand.",
     body: "Reading a stack of documents to pull out the same six facts. Turning notes into the format the file needs. Producing the draft that always requires the same three edits. Or the process that runs on a spreadsheet held together by convention and one person's memory, where the honest answer is a small purpose-built tool rather than a subscription to something that does forty things you don't need. This class of work sat between \"automate it\" and \"hire someone\" for decades. In the last two years it moved — and I know how far, because I moved my own transcription work across it first.",
@@ -63,7 +63,7 @@ const SERVICES = [
   {
     mark: "D",
     kind: "Built for you",
-    title: "Making your own information usable",
+    title: "Get answers out of your own files",
     problem:
       "The knowledge exists — in old matters, past projects, email threads and people's heads — but nobody can get at it when they need it.",
     body: "This is the problem most often mislabelled as an AI problem when it's really an organisation problem with an AI-shaped solution at the end. The work is deciding what's worth keeping, giving it a structure, and only then putting retrieval on top. Skip the first two and you get a system that answers confidently and wrongly, which is worse than no system at all.",

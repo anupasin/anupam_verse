@@ -13,7 +13,7 @@ export const siteConfig = {
   title: "AnupamVerse — Precision language work, and the systems behind it",
 
   description:
-    "Medical and legal transcription, editorial work, and the AI systems that support both. I do precision language work daily — and build the tools that make it faster.",
+    "I turn messy information into something usable — sometimes by hand, sometimes by building the system that does it. Medical and legal transcription, editorial work, and the AI systems behind both.",
 
   /**
    * ⚠️ SET THIS BEFORE DEPLOYING.

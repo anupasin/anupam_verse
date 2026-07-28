@@ -26,7 +26,7 @@ const FACTS = [
   },
   {
     title: "I build the tools I use",
-    body: "My own transcript pipeline handles formatting, punctuation and speaker turns to a standard I'd sign. Systems I haven't relied on myself, I don't sell.",
+    body: "The pipeline I run on my own work handles the mechanical layer to a standard I'd sign my name to. Systems I haven't relied on myself, I don't sell.",
   },
   {
     title: "Yours to keep",
