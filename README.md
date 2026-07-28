@@ -4,16 +4,17 @@ Personal site for an independent AI consultant, builder and writer. Next.js 15
 (App Router), TypeScript, Tailwind CSS v4, MDX content. Fully static, deploy-ready
 for Vercel.
 
-## Before you deploy — two lines to change
+## Before you point a domain at it
 
-Both live in [`src/config/site.ts`](src/config/site.ts):
+One line left, in [`src/config/site.ts`](src/config/site.ts):
 
 | Field | Currently | Why it matters |
 | --- | --- | --- |
-| `email` | `hello@example.com` | Every "get in touch" on the site resolves to this. No real address was assumed for you. |
-| `url` | `https://anupamverse.com` | Canonical URLs, sitemap, robots, Open Graph. Or set `NEXT_PUBLIC_SITE_URL` in Vercel and leave it. |
+| `url` | `https://anupamverse.com` | Canonical URLs, sitemap, robots and Open Graph all resolve against it. Set `NEXT_PUBLIC_SITE_URL` in the Vercel project instead if you'd rather not hard-code it. |
 
-Nothing else is required.
+`email` is set to `birupia@gmail.com` and every "get in touch" on the site
+resolves to it. It's a `mailto:` in plain HTML, so it is publicly scrapeable —
+if that becomes a spam problem, the fix is a contact form, not obfuscation.
 
 ## Run it
 
@@ -81,7 +82,7 @@ the Selected work band on the homepage.
 ## One thing to read before publishing
 
 [`content/articles/fluent-confident-wrong.mdx`](content/articles/fluent-confident-wrong.mdx)
-is an essay I drafted in your voice, on what fifteen years of transcription
+is an essay I drafted in your voice, on what twenty years of transcription
 teaches about how language models fail. It is the only thing on this site with
 words put in your mouth, and it is currently set to publish. Edit it, rewrite it
 or delete the file — but read it first.

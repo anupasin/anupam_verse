@@ -12,7 +12,7 @@ import {
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Fifteen years transcribing medical and legal records — still doing it, and building the systems that support it. Why the two halves belong together.",
+    "Twenty years transcribing medical and legal records — still doing it, and building the systems that support it. Why the two halves belong together.",
   alternates: { canonical: "/about" },
 };
 
@@ -51,7 +51,7 @@ export default function AboutPage() {
         <Section>
           <div className="prose">
             <p className="!text-[19px] !leading-[1.66] text-strong">
-              I transcribe medical and legal material. I have done for fifteen years, and I still do
+              I transcribe medical and legal material. I have done for twenty years, and I still do
               &mdash; currently with Transcription For Everyone. That is not a paragraph of backstory
               on the way to the AI part. It is the foundation of the AI part, and I&rsquo;d rather be
               clear about the order.

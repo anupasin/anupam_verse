@@ -21,7 +21,7 @@ import { Cell, CellGrid } from "@/components/primitives";
 
 const FACTS = [
   {
-    title: "Fifteen years in, still practising",
+    title: "Twenty years in, still practising",
     body: "Medical and legal transcription, editing and quality control — currently with Transcription For Everyone. Not a former career I reference; work I did this week.",
   },
   {

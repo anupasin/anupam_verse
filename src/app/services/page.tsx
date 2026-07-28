@@ -24,7 +24,7 @@ const SERVICES = [
     title: "Turn recordings into records you can rely on",
     problem:
       "You have recordings that need to become documents precise enough to be relied on — and the automatic transcript isn't close enough to use.",
-    body: "Medical, legal and general transcription, fifteen years in and still my regular work. Automatic speech-to-text has become genuinely good at words and remains poor at everything else: who was speaking, where the sentence ends, what the clinician actually meant by an abbreviation, how a jurisdiction expects its transcripts formatted. I run my own pipeline for the mechanical layer — speaker identification, paragraph and Q&A segmentation, punctuation, spacing and formatting conventions — which frees my attention for the ambiguous word, the crosstalk, and the thing a speaker plainly meant but did not quite say.",
+    body: "Medical, legal and general transcription, twenty years in and still my regular work. Automatic speech-to-text has become genuinely good at words and remains poor at everything else: who was speaking, where the sentence ends, what the clinician actually meant by an abbreviation, how a jurisdiction expects its transcripts formatted. I run my own pipeline for the mechanical layer — speaker identification, paragraph and Q&A segmentation, punctuation, spacing and formatting conventions — which frees my attention for the ambiguous word, the crosstalk, and the thing a speaker plainly meant but did not quite say.",
     looks: [
       "Medical transcription: consultations, procedures and correspondence with the vocabulary correct",
       "Legal and court work: depositions, examinations and hearings in the format the jurisdiction expects",

@@ -107,7 +107,7 @@ export default function HomePage() {
               rough draft into a piece worth publishing.
             </p>
             <p>
-              I do that work by hand &mdash; fifteen years of medical and legal transcription, still
+              I do that work by hand &mdash; twenty years of medical and legal transcription, still
               current &mdash; and I build the systems that do it at scale. The second half is
               credible because of the first: I know where automated language systems quietly fail
               because I still catch them failing.

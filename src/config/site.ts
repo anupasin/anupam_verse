@@ -22,12 +22,8 @@ export const siteConfig = {
    */
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://anupamverse.com",
 
-  /**
-   * ⚠️ SET THIS BEFORE DEPLOYING.
-   * Every "get in touch" on the site resolves to this one address. It is
-   * intentionally a placeholder — no real address was assumed for you.
-   */
-  email: "hello@example.com",
+  /** Every "get in touch" on the site resolves to this one address. */
+  email: "birupia@gmail.com",
 
   author: {
     name: "Anupam Singh",
